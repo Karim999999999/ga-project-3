@@ -7,6 +7,7 @@ import Articles from './articles/Articles';
 import SingleArticle from './articles/SingleArticle';
 import Athletes from './athletes/Athletes';
 import SingleAthlete from './athletes/SingleAthlete';
+import Login from './auth/Login';
 import Home from './Home';
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
       <Route path='/about' element={<About />} />
       <Route path='/discover' element={<Articles />} />
       <Route path='/discover/:id' element={<SingleArticle />} />
+      <Route path='/login' element={<Login />} />
     </Routes>
   </BrowserRouter>
 );

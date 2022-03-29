@@ -5,7 +5,7 @@ import Navbar from '../Navbar';
 
 const SingleArticle = () => {
   const { id } = useParams();
-  const article = articles.find(article => article._id === id);
+  const article = articles.find(article => article.id === id);
   console.log(article);
 
   return (

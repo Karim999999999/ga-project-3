@@ -138,6 +138,15 @@ img {
   font-size: 1.825rem;
   text-transform: uppercase;
 
+  &.home,
+  &.login {
+    background-color: var(--color-home);
+
+    .main-navigation {
+      background-color: var(--color-home);
+    }
+  }
+
   &.athletes {
     background-color: var(--color-athletes-frontend);
 
@@ -296,11 +305,12 @@ ul {
   outline: 0.2em solid #000;
   text-decoration: none;
   display: inline-block;
+  transition: all 0.3s linear;
+  cursor: pointer;
 }
 
 .btn-support {
   color: #000;
-  transition: all 0.3s linear;
 
   &:hover {
     color: #fff;
@@ -345,6 +355,50 @@ ul {
       > * + * {
         margin-left: 1em;
       }
+    }
+  }
+}
+
+.form {
+  background-color: var(--color-home);
+  border: 3px solid #000;
+  padding: 3em;
+
+  h1 {
+    text-decoration: none;
+  }
+
+  .input-field {
+    text-align: left;
+    margin-bottom: 1em;
+  }
+
+  label {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  input,
+  textarea {
+    font-family: inherit;
+    font-size: inherit;
+    font-size: 1.25rem;
+    display: inline-block;
+    width: 100%;
+    padding: 0.5em;
+    border: 0.2em solid #000;
+  }
+
+  .btn-submit {
+    display: inline-block;
+    margin-top: 1em;
+    background-color: inherit;
+    border: 0.2em solid #000;
+    outline: none;
+
+    &:hover {
+      background-color: var(--color-athletes-frontend);
     }
   }
 }
