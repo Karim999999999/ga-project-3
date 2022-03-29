@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import '../styles/style.scss';
 import About from './about/About';
 import Articles from './articles/Articles';
@@ -9,6 +8,9 @@ import Athletes from './athletes/Athletes';
 import SingleAthlete from './athletes/SingleAthlete';
 import Home from './Home';
 import ArticleForm from './form/ArticleForm';
+import ManageHome from './manage/managehome.js';
+import ArticlesTable from './manage/article-manager/ArticlesTable';
+import Login from './auth/login';
 
 const App = () => (
   <BrowserRouter>
@@ -19,7 +21,13 @@ const App = () => (
       <Route path='/about' element={<About />} />
       <Route path='/discover' element={<Articles />} />
       <Route path='/discover/:id' element={<SingleArticle />} />
+      <Route path='/manage' element={<ManageHome />} />
       <Route path='/manage/newarticle' element={<ArticleForm />} />
+      <Route
+        path='/manage/articles/status/:status'
+        element={<ArticlesTable />}
+      />
+      <Route path='/login' element={<Login />} />
     </Routes>
   </BrowserRouter>
 );
