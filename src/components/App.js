@@ -8,6 +8,7 @@ import SingleArticle from './articles/SingleArticle';
 import Athletes from './athletes/Athletes';
 import SingleAthlete from './athletes/SingleAthlete';
 import Home from './Home';
+import ArticleForm from './form/ArticleForm';
 
 const App = () => (
   <BrowserRouter>
@@ -18,6 +19,7 @@ const App = () => (
       <Route path='/about' element={<About />} />
       <Route path='/discover' element={<Articles />} />
       <Route path='/discover/:id' element={<SingleArticle />} />
+      <Route path='/manage/newarticle' element={<ArticleForm />} />
     </Routes>
   </BrowserRouter>
 );
