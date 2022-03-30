@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../Navbar';
 import { loginUser } from '../../api/auth';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,25 +24,24 @@ function Login() {
   }
   return (
     <>
-      <Navbar />
-      <div className="login-page">
+      <div className='login-page'>
         <h1>LOGIN:</h1>
-        <form className="login-form" onSubmit={handleSubmit}>
-          <label htmlFor="email">Email</label>
+        <form className='login-form' onSubmit={handleSubmit}>
+          <label htmlFor='email'>Email</label>
           <input
-            type="email"
-            name="email"
-            placeholder="email"
+            type='email'
+            name='email'
+            placeholder='email'
             onChange={handleChange}
           />
-          <label htmlFor="password">Password</label>
+          <label htmlFor='password'>Password</label>
           <input
-            type="password"
-            name="password"
-            placeholder="password"
+            type='password'
+            name='password'
+            placeholder='password'
             onChange={handleChange}
           />
-          <button type="submit"> Login </button>
+          <button type='submit'> Login </button>
         </form>
       </div>
     </>
