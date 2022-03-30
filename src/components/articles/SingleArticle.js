@@ -1,19 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import articles from '../../data/articles.json';
-import Navbar from '../Navbar';
+import { getArticleById } from '../../api/articles';
 
 const SingleArticle = () => {
   const { id } = useParams();
-  const article = articles.find(article => article.id === id);
-  console.log(article);
+  const [article, setArticle] = useState(null);
 
-  return (
-    <>
-      <Navbar />
-      <h1>{article._id}</h1>
-    </>
-  );
+  useEffect(() => {
+    getArticleById(id).then(article => setArticle(article));
+  }, []);
+
+  return <>{!article ? <p>Loading...</p> : <h1>{article.title}</h1>}</>;
 };
 
 export default SingleArticle;

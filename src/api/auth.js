@@ -15,3 +15,11 @@ export const loginUser = credentials =>
       return data.message;
     })
     .catch(console.error);
+
+export const getUserById = id =>
+  axios
+    .request({
+      method: 'GET',
+      url: `/api/users/${id}`,
+    })
+    .then(({ data }) => data);

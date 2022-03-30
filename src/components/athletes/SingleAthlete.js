@@ -10,7 +10,6 @@ const SingleAthlete = () => {
 
   return (
     <>
-      <Navbar />
       <section className='section section-single section-athletes'>
         <div className='container container-main'>
           <h1>{athlete.name}</h1>

@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
-import Navbar from '../Navbar';
+import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../api/auth';
 
 const Login = () => {
   const initialState = { email: '', password: '' };
   const [credentials, setCredentials] = useState(initialState);
+  const navigate = useNavigate();
 
   const handleChange = e => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    loginUser(credentials);
+    await loginUser(credentials);
     setCredentials(initialState);
-    console.log(credentials);
+    navigate('/');
   };
 
   return (
     <>
-      <Navbar />
       <section className='section'>
         <div className='container container-main'>
           <form className='form' onSubmit={handleSubmit}>

@@ -9,7 +9,6 @@ import JoinBtn from './JoinBtn';
 const Athletes = () => {
   return (
     <>
-      <Navbar />
       <section className='section section-main section-athletes'>
         <h1>Our Athletes</h1>
         <div className='container container-main container-grid container-athletes'>

@@ -9,6 +9,8 @@ const Navbar = () => {
   const toggleHamburger = () => setIsMenuOpen(isMenuOpen ? false : true);
   const closeMenuIfOpen = () => isMenuOpen && setIsMenuOpen(false);
 
+  const token = localStorage.getItem('token');
+
   return (
     <header className={`header ${navTheme}`}>
       <div className='container container-grid container-header'>
@@ -43,19 +45,43 @@ const Navbar = () => {
                 to='/discover'
                 onClick={closeMenuIfOpen}
               >
-                Articles
+                Discover
               </Link>
             </li>
-            <li>
-              <Link className='menu-item' to='#' onClick={closeMenuIfOpen}>
-                Manage
-              </Link>
-            </li>
-            <li>
-              <Link className='menu-item' to='/login' onClick={closeMenuIfOpen}>
-                Login
-              </Link>
-            </li>
+            {token && (
+              <li>
+                <Link
+                  className='menu-item'
+                  to='/manage'
+                  onClick={closeMenuIfOpen}
+                >
+                  Manage
+                </Link>
+              </li>
+            )}
+
+            {!token && (
+              <>
+                <li>
+                  <Link
+                    className='menu-item'
+                    to='/login'
+                    onClick={closeMenuIfOpen}
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className='menu-item'
+                    to='/register'
+                    onClick={closeMenuIfOpen}
+                  >
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
           <Link
             to='#'
