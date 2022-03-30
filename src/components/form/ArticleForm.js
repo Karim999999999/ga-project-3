@@ -1,11 +1,10 @@
 /* eslint-disable no-unreachable */
 import React from 'react';
-import Navbar from '../Navbar';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { createArticle } from '../../api/articles';
 
-const ArticleForm = () => {
+const ArticleForm = (props) => {
   const navigate = useNavigate();
   const categories = ['Cycling 101', 'Life in the city'];
 
