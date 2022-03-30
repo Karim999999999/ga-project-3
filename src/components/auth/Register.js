@@ -1,7 +1,6 @@
 import React from 'react';
 import { registerUser } from '../../api/auth';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../Navbar';
 
 function Register() {
   const navigate = useNavigate();

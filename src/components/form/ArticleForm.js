@@ -39,7 +39,12 @@ const ArticleForm = (props) => {
         <label htmlFor='form-title'>FORM TITLE</label>
       </div>
       <div>
-        <input name='title' type='text' onChange={handleChange} />
+        <input
+          name='title'
+          type='text'
+          onChange={handleChange}
+          {...props.body}
+        />
       </div>
       <div>
         <label htmlFor='form-body'>FORM BODY</label>
@@ -51,13 +56,19 @@ const ArticleForm = (props) => {
           cols='40'
           rows='10'
           onChange={handleChange}
+          {...props.body}
         ></textarea>
       </div>
       <div>
         <label htmlFor='categories'>CATEGORIES</label>
       </div>
       <div>
-        <select name='categories' id='categories' onChange={handleChange}>
+        <select
+          name='categories'
+          id='categories'
+          onChange={handleChange}
+          {...props.body}
+        >
           {categories.map((category) => (
             <option key={category}> {category} </option>
           ))}
@@ -67,7 +78,12 @@ const ArticleForm = (props) => {
         <label htmlFor='action-buttons'>ACTION BUTTON SPACE</label>
       </div>
       <div>
-        <button type='submit' className='action1' onClick={handleSubmit}>
+        <button
+          type='submit'
+          className='action1'
+          onClick={handleSubmit}
+          {...props.body}
+        >
           Action 1
         </button>
       </div>
