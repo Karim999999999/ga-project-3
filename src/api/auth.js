@@ -7,11 +7,11 @@ export const loginUser = async (credentials) => {
     data: credentials,
   };
 
-  const { data } = await axios.request(options);
+  const data = await axios.request(options);
   if (data.token) {
     window.sessionStorage.setItem('token', data.token);
   } else {
     window.sessionStorage.removeItem('token');
   }
-  return data.message;
+  return data;
 };

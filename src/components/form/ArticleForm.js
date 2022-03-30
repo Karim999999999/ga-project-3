@@ -2,8 +2,8 @@
 import React from 'react';
 import Navbar from '../Navbar';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { createArticle } from '../../api/articles';
 
 const ArticleForm = () => {
   const navigate = useNavigate();
@@ -24,7 +24,8 @@ const ArticleForm = () => {
 
     const getData = async () => {
       try {
-        const forms = await navigate('/');
+        await createArticle(form);
+        navigate('/');
       } catch (error) {
         console.log(error);
       }
@@ -70,9 +71,6 @@ const ArticleForm = () => {
       <div>
         <button type='submit' className='action1' onClick={handleSubmit}>
           Action 1
-        </button>
-        <button type='submit' className='action2'>
-          Action 2
         </button>
       </div>
     </div>
