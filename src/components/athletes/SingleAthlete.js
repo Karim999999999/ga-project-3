@@ -1,16 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import athletes from '../../data/athletes.json';
-import Navbar from '../Navbar';
+
 import JoinBtn from './JoinBtn';
 
 const SingleAthlete = () => {
   const { id } = useParams();
-  const athlete = athletes.find(athlete => athlete.id === parseInt(id));
+  const athlete = athletes.find((athlete) => athlete.id === parseInt(id));
 
   return (
     <>
-      <Navbar />
       <section className='section section-single section-athletes'>
         <div className='container container-main'>
           <h1>{athlete.name}</h1>

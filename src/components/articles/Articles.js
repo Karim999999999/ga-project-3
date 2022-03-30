@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from '../Navbar';
+
 import articles from '../../data/articles.json';
 
 const Articles = () => {
   return (
     <>
-      <Navbar />
       <section className='section section-main section-athletes'>
         <h1>Welcome to Discover</h1>
         <div className='container container-main container-articles'>
