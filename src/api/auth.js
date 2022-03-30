@@ -13,5 +13,6 @@ export const loginUser = async (credentials) => {
   } else {
     window.sessionStorage.removeItem('token');
   }
-  return data.message;
+  console.log(data);
+  return data;
 };

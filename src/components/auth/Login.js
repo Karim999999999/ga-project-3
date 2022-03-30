@@ -14,9 +14,8 @@ function Login() {
     event.preventDefault();
     const getData = async () => {
       try {
-        const { data } = await loginUser(credentials);
+        const data = await loginUser(credentials);
         console.log(data);
-        window.sessionStorage.setItem('accessToken', data.token);
         navigate('/');
       } catch (err) {
         console.error(err);

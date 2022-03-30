@@ -349,3 +349,47 @@ ul {
     }
   }
 }
+
+.table-and-controller {
+  margin: 20px;
+  text-align: center;
+
+  .table-controller {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .table {
+    margin-top: 20px;
+  }
+  .button {
+    padding: 5px;
+    width: 100px;
+    background-color: var(--color-discover);
+    border: none;
+    margin: 10px;
+  }
+
+  .table-card {
+    display: flex;
+    justify-content: space-around;
+    border: #000 solid 1px;
+    padding: 10px;
+    align-items: center;
+
+    h1 {
+      font-size: 30px;
+    }
+
+    button {
+      padding: 5px;
+      width: 100px;
+      border-radius: 50px;
+      background-color: var(--color-discover);
+      border: none;
+    }
+    .table-item {
+      padding: 10px;
+    }
+  }
+}
