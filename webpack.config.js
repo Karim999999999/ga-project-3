@@ -7,7 +7,7 @@ const env =
     ? new webpack.EnvironmentPlugin({ ...process.env })
     : new Dotenv();
 
-module.exports = (webpackEnv) => {
+module.exports = webpackEnv => {
   const publicPath =
     webpackEnv.NODE_ENV === 'local'
       ? {

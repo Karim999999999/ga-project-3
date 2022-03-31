@@ -1,18 +1,25 @@
 import axios from 'axios';
 
-export const loginUser = async (credentials) => {
-  const options = {
-    method: 'POST',
-    url: '/api/login',
-    data: credentials,
-  };
+export const loginUser = credentials =>
+  axios
+    .request({
+      method: 'POST',
+      url: '/api/login',
+      data: credentials,
+    })
+    .then(({ data }) => {
+      data.token
+        ? window.sessionStorage.setItem('token', data.token)
+        : window.sessionStorage.removeItem('token');
 
-  const { data } = await axios.request(options);
-  if (data.token) {
-    window.sessionStorage.setItem('token', data.token);
-  } else {
-    window.sessionStorage.removeItem('token');
-  }
-  console.log(data);
-  return data;
-};
+      return data;
+    })
+    .catch(console.error);
+
+export const getUserById = id =>
+  axios
+    .request({
+      method: 'GET',
+      url: `/api/users/${id}`,
+    })
+    .then(({ data }) => data);

@@ -4,14 +4,18 @@ import { Link, useLocation } from 'react-router-dom';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const navTheme = location.pathname.split('/')[1];
+  const navTheme = location.pathname.split('/')[1] || 'home';
 
   const toggleHamburger = () => setIsMenuOpen(isMenuOpen ? false : true);
+  const closeMenuIfOpen = () => isMenuOpen && setIsMenuOpen(false);
+
+  const token = sessionStorage.getItem('token');
 
   return (
     <header className={`header ${navTheme}`}>
-      <div className="container container-grid container-header">
-        <Link to="/" className="logo">
+
+      <div className='container container-grid container-header'>
+        <Link to='/' className='logo' onClick={closeMenuIfOpen}>
           LOGO
         </Link>
         <div
@@ -23,27 +27,69 @@ const Navbar = () => {
         <nav className={`main-navigation ${isMenuOpen ? 'open' : ''}`}>
           <ul>
             <li>
-              <Link className="menu-item" to="/about">
+              <Link className='menu-item' to='/about' onClick={closeMenuIfOpen}>
                 About
               </Link>
             </li>
-            <li className="active">
-              <Link className="menu-item" to="/athletes">
+            <li>
+              <Link
+                className='menu-item'
+                to='/athletes'
+                onClick={closeMenuIfOpen}
+              >
                 Team
               </Link>
             </li>
             <li>
-              <Link className="menu-item" to="/discover">
-                Articles
+              <Link
+                className='menu-item'
+                to='/discover'
+                onClick={closeMenuIfOpen}
+              >
+                Discover
               </Link>
             </li>
-            <li>
-              <Link className="menu-item" to="/manage">
-                Manage
-              </Link>
-            </li>
+            {token && (
+              <li>
+                <Link
+                  className='menu-item'
+                  to='/manage'
+                  onClick={closeMenuIfOpen}
+                >
+                  Manage
+                </Link>
+              </li>
+            )}
+
+            {!token && (
+              <>
+                <li>
+                  <Link
+                    className='menu-item'
+                    to='/login'
+                    onClick={closeMenuIfOpen}
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className='menu-item'
+                    to='/register'
+                    onClick={closeMenuIfOpen}
+                  >
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
-          <Link to="#" className="menu-item btn btn-support">
+          <Link
+            to='#'
+            className='menu-item btn btn-support'
+            onClick={closeMenuIfOpen}
+          >
+
             Support us
           </Link>
         </nav>

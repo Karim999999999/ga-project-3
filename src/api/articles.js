@@ -1,67 +1,29 @@
 import axios from 'axios';
 
-export const getArticles = async () => {
-  const options = {
-    method: 'GET',
-    url: '/api/articles'
-  };
 
-  const { data } = await axios.request(options);
+const getAllArticles = () =>
+  axios
+    .request({
+      method: 'GET',
+      url: '/api/articles',
+    })
+    .then(({ data }) => data.data);
 
-  return data;
-};
-export const createArticle = async () => {
-  const options = {
-    method: 'POST',
-    url: '/api/articles'
-  };
+const getArticlesByCategory = category =>
+  axios
+    .request({
+      method: 'GET',
+      url: '/api/articles',
+      params: { 'categories[in]': category },
+    })
+    .then(({ data }) => data.data);
 
-  const { data } = await axios.request(options);
+const getArticleById = id =>
+  axios
+    .request({
+      method: 'GET',
+      url: `/api/articles/${id}`,
+    })
+    .then(({ data }) => data);
 
-  return data;
-};
-
-export const getArticlesByStatusAndUserId = async (articleStatus) => {
-  const options = {
-    method: 'GET',
-    url: `/api/manage/articles/status/${articleStatus}`,
-    headers: {
-      authorization: `Bearer ${window.sessionStorage.getItem('token')}`
-    }
-  };
-
-  const { data } = await axios.request(options);
-
-  return data;
-};
-
-export const getArticleById = async (id) => {
-  const options = {
-    method: 'GET',
-    url: `/articles/${id}`
-  };
-
-  const { data } = await axios.request(options);
-
-  return data;
-};
-export const updateArticle = async (id) => {
-  const options = {
-    method: 'PUT',
-    url: `/articles/${id}`
-  };
-
-  const { data } = await axios.request(options);
-
-  return data;
-};
-export const deleteArticle = async (id) => {
-  const options = {
-    method: 'DELETE',
-    url: `/articles/${id}`
-  };
-
-  const { data } = await axios.request(options);
-
-  return data;
-};
+export { getAllArticles, getArticlesByCategory, getArticleById };

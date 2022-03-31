@@ -1,53 +1,60 @@
-import React from 'react';
-import Navbar from '../Navbar';
-import { loginUser } from '../../api/auth';
+
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { loginUser } from '../../api/auth';
 
-function Login() {
+const Login = () => {
+  const initialState = { email: '', password: '' };
+  const [credentials, setCredentials] = useState(initialState);
   const navigate = useNavigate();
-  const [credentials, setCredentials] = React.useState(null);
-  function handleChange(event) {
-    setCredentials({ ...credentials, [event.target.name]: event.target.value });
-  }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const getData = async () => {
-      try {
-        const data = await loginUser(credentials);
-        console.log(data);
-        navigate('/');
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    getData();
-  }
+  const handleChange = e => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    await loginUser(credentials);
+    setCredentials(initialState);
+    navigate('/');
+  };
+
   return (
     <>
-      <Navbar />
-      <div className="login-page">
-        <h1>LOGIN:</h1>
-        <form className="login-form" onSubmit={handleSubmit}>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="email"
-            onChange={handleChange}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            onChange={handleChange}
-          />
-          <button type="submit"> Login </button>
-        </form>
-      </div>
+      <section className='section'>
+        <div className='container container-main'>
+          <form className='form' onSubmit={handleSubmit}>
+            <h1>Login</h1>
+            <div className='input-field'>
+              <label htmlFor='email'>Email</label>
+              <input
+                type='email'
+                id='email'
+                name='email'
+                value={credentials.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className='input-field'>
+              <label htmlFor='password'>Password</label>
+              <input
+                type='password'
+                id='password'
+                name='password'
+                value={credentials.password}
+                onChange={handleChange}
+              />
+            </div>
+
+            <button type='submit' className='btn btn-submit'>
+              Login
+            </button>
+          </form>
+        </div>
+      </section>
     </>
   );
-}
+};
+
 
 export default Login;
