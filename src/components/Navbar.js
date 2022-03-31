@@ -13,6 +13,7 @@ const Navbar = () => {
 
   return (
     <header className={`header ${navTheme}`}>
+
       <div className='container container-grid container-header'>
         <Link to='/' className='logo' onClick={closeMenuIfOpen}>
           LOGO
@@ -21,7 +22,7 @@ const Navbar = () => {
           className={`menu-btn ${isMenuOpen ? 'open' : ''}`}
           onClick={toggleHamburger}
         >
-          <div className='menu-btn__lines'></div>
+          <div className="menu-btn__lines"></div>
         </div>
         <nav className={`main-navigation ${isMenuOpen ? 'open' : ''}`}>
           <ul>
@@ -88,6 +89,7 @@ const Navbar = () => {
             className='menu-item btn btn-support'
             onClick={closeMenuIfOpen}
           >
+
             Support us
           </Link>
         </nav>

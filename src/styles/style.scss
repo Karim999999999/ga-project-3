@@ -8,6 +8,7 @@
   --color-session: #ffc076;
   --color-about: #58faff;
   --color-discover: #ff83ff;
+  --color-manage: #ffc076;
 
   --ff-body: 'Poppins', sans-serif;
   --ff-title: 'Oswald', sans-serif;
@@ -368,6 +369,7 @@ img {
   }
 }
 
+
 .form {
   background-color: var(--color-home);
   border: 3px solid #000;
@@ -479,9 +481,7 @@ img {
   font-size: 2rem;
 }
 
-.table-and-controller {
-  margin: 20px;
-  text-align: center;
+
 
   ul {
     list-style: none;
@@ -506,42 +506,22 @@ img {
     }
   }
 
-  .table-controller {
-    margin-top: 10px;
+.apps-dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .app-button-container {
+    margin: 20px;
     text-align: center;
-  }
-
-  .table {
-    margin-top: 20px;
-  }
-  .button {
-    padding: 5px;
-    width: 100px;
-    background-color: var(--color-discover);
-    border: none;
-    margin: 10px;
-  }
-
-  .table-card {
-    display: flex;
-    justify-content: space-around;
-    border: #000 solid 1px;
-    padding: 10px;
-    align-items: center;
-
-    h1 {
-      font-size: 30px;
+    .app-icon {
+      height: 200px;
+      width: 200px;
+      border-radius: 30px;
+      background-color: #ff83ff;
     }
-
-    button {
-      padding: 5px;
-      width: 100px;
-      border-radius: 50px;
-      background-color: var(--color-discover);
-      border: none;
-    }
-    .table-item {
-      padding: 10px;
+    #athlete-app {
+      background-color: #bea37c;
     }
   }
 }
+

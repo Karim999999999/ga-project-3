@@ -12,7 +12,7 @@ export const loginUser = credentials =>
         ? window.sessionStorage.setItem('token', data.token)
         : window.sessionStorage.removeItem('token');
 
-      return data.message;
+      return data;
     })
     .catch(console.error);
 

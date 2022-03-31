@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllArticles, getArticlesByCategory } from '../../api/articles';
 
+
+
 const Articles = () => {
   const [articles, setArticles] = useState(null);
   const [articlesBySport, setArticlesBySport] = useState(null);
