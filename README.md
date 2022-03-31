@@ -14,3 +14,7 @@ There are a few key differences in this frontend app.
 - Webpack dev server is configured as a proxy server (the proxy part of the config), in order for us to talk to our express API
 - Because it's set up as a proxy, when writing our routes, we DO NOT include the host part. So to get all of our pokemon, instead of the path: 'localhost:8000/api/pokemon' with axios, we'd just do: '/api/pokemon'
 - Both express and mongodb must be running for this to work, as they are now dependencies of this project!
+
+editor is publisher! access to all articles whre status is editor and reviewed and publish - NOT drafts
+writer access only his articles
+new articles = editor tag

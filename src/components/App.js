@@ -10,9 +10,10 @@ import Athletes from './athletes/Athletes';
 import SingleAthlete from './athletes/SingleAthlete';
 import Login from './auth/Login';
 import Home from './Home';
-import ArticleByStatus from './manage-marco/ArticleByStatus';
-import ArticlesByUser from './manage-marco/ArticlesByUser';
-import ManageHome from './manage-marco/Manage';
+import ArticleByStatus from './manage/ArticleByStatus';
+import ArticleForm from './manage/ArticleForm';
+import ArticlesByUser from './manage/ArticlesByUser';
+import ManageHome from './manage/Manage';
 import Navbar from './Navbar';
 
 const App = () => (
@@ -31,6 +32,11 @@ const App = () => (
         element={<ArticlesByCategory />}
       />
       <Route path='/manage/articles' element={<ArticlesByUser />} />
+      <Route path='/manage/articles/create' element={<ArticleForm />} />
+      <Route
+        path='/manage/articles/:articleId/:status'
+        element={<ArticleForm />}
+      />
       <Route path='/manage/articles/:status' element={<ArticleByStatus />} />
 
       <Route path='/login' element={<Login />} />

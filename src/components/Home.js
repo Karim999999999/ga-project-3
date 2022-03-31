@@ -8,8 +8,8 @@ const Home = () => {
   const [user, setUser] = useState(null);
 
   useEffect(async () => {
-    if (localStorage.getItem('token')) {
-      const id = jwtDecode(localStorage.getItem('token')).userId;
+    if (sessionStorage.getItem('token')) {
+      const id = jwtDecode(sessionStorage.getItem('token')).userId;
       const user = await getUserById(id);
       setUser(user);
     }

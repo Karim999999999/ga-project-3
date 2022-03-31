@@ -9,7 +9,7 @@ const Navbar = () => {
   const toggleHamburger = () => setIsMenuOpen(isMenuOpen ? false : true);
   const closeMenuIfOpen = () => isMenuOpen && setIsMenuOpen(false);
 
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
 
   return (
     <header className={`header ${navTheme}`}>

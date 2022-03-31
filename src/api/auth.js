@@ -9,8 +9,8 @@ export const loginUser = credentials =>
     })
     .then(({ data }) => {
       data.token
-        ? window.localStorage.setItem('token', data.token)
-        : window.localStorage.removeItem('token');
+        ? window.sessionStorage.setItem('token', data.token)
+        : window.sessionStorage.removeItem('token');
 
       return data.message;
     })
