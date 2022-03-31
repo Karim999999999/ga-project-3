@@ -17,16 +17,16 @@ function ArticlesTable() {
   console.log('ARTICLES ARE', tableData);
 
   function handleForm(articleId) {
-    if (location.pathname === '/manage/articles/status/draft') {
+    if (location.pathname === '/manage/articles/stat/draft') {
       return `/manage/article/${articleId}/draftForm`;
     }
-    if (location.pathname === '/manage/articles/status/editor') {
+    if (location.pathname === '/manage/articles/stat/editor') {
       return `/manage/article/${articleId}/senttoeditorForm`;
     }
-    if (location.pathname === '/manage/articles/status/published') {
+    if (location.pathname === '/manage/articles/stat/published') {
       return `/manage/article/${articleId}/publishedForm`;
     }
-    if (location.pathname === '/manage/articles/status/review') {
+    if (location.pathname === '/manage/articles/stat/review') {
       return `/manage/article/${articleId}/reviewForm`;
     }
   }
@@ -35,16 +35,16 @@ function ArticlesTable() {
     <div className="table-and-controller">
       <h1> Table title </h1>
       <div className="table-controller">
-        <Link className="button" to="/manage/articles/status/draft">
+        <Link className="button" to="/manage/articles/stat/draft">
           DRAFTS
         </Link>
-        <Link className="button" to="/manage/articles/status/editor">
+        <Link className="button" to="/manage/articles/stat/editor">
           SENT TO EDITOR
         </Link>
-        <Link className="button" to="/manage/articles/status/published">
+        <Link className="button" to="/manage/articles/stat/published">
           PUBLISHED
         </Link>
-        <Link className="button" to="/manage/articles/status/review">
+        <Link className="button" to="/manage/articles/stat/review">
           REVIEW
         </Link>
       </div>
@@ -58,9 +58,10 @@ function ArticlesTable() {
               <div className="table-item" id="title">
                 <h1>{article.title}</h1>
               </div>
-              <div className="table-item" id="date"></div>
-              <p>{article.createdAt}</p>
-              <p>{article.status}</p>
+              <div className="table-item" id="date">
+                <p>{article.createdAt}</p>
+                <p>{article.status}</p>
+              </div>
               <div className="table-item" id="viewbutton">
                 <Link className="button" to={handleForm(article._id)}>
                   view

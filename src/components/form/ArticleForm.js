@@ -7,10 +7,7 @@ const ArticleForm = (props) => {
   const navigate = useNavigate();
   const categories = ['Cycling 101', 'Life in the city'];
 
-  const [form, setForm] = React.useState({
-    title: '',
-    body: '',
-  });
+  const [form, setForm] = React.useState({});
 
   const handleChange = (event) => {
     console.log(handleChange);
@@ -36,36 +33,36 @@ const ArticleForm = (props) => {
       <h1>CREATE NEW FORM</h1>
 
       <div>
-        <label htmlFor='form-title'>FORM TITLE</label>
+        <label htmlFor="form-title">FORM TITLE</label>
       </div>
       <div>
         <input
-          name='title'
-          type='text'
+          name="title"
+          type="text"
           onChange={handleChange}
           {...props.body}
         />
       </div>
       <div>
-        <label htmlFor='form-body'>FORM BODY</label>
+        <label htmlFor="form-body">FORM BODY</label>
       </div>
       <div>
         <textarea
-          name='form-body'
-          id='form-body'
-          cols='40'
-          rows='10'
+          name="form-body"
+          id="form-body"
+          cols="40"
+          rows="10"
           onChange={handleChange}
           {...props.body}
         ></textarea>
       </div>
       <div>
-        <label htmlFor='categories'>CATEGORIES</label>
+        <label htmlFor="categories">CATEGORIES</label>
       </div>
       <div>
         <select
-          name='categories'
-          id='categories'
+          name="categories"
+          id="categories"
           onChange={handleChange}
           {...props.body}
         >
@@ -75,12 +72,12 @@ const ArticleForm = (props) => {
         </select>
       </div>
       <div>
-        <label htmlFor='action-buttons'>ACTION BUTTON SPACE</label>
+        <label htmlFor="action-buttons">ACTION BUTTON SPACE</label>
       </div>
       <div>
         <button
-          type='submit'
-          className='action1'
+          type="submit"
+          className="action1"
           onClick={handleSubmit}
           {...props.body}
         >
