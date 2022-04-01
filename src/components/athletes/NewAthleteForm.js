@@ -11,8 +11,8 @@ const NewAthleteForm = () => {
   });
 
   const handleChange = (event) => {
-    console.log(handleChange);
     setForm({ ...form, [event.target.name]: event.target.value });
+    console.log(form);
   };
 
   function handleSubmit(event) {
@@ -21,6 +21,8 @@ const NewAthleteForm = () => {
     const getData = async () => {
       try {
         await createNewAthlete(form);
+        console.log('SUCCESS');
+        navigate('/');
       } catch (error) {
         console.log(error);
       }
@@ -44,147 +46,159 @@ const NewAthleteForm = () => {
   const yearsArray = generateYearsBetween();
   return (
     <div>
-      <h1>CREATE NEW FORM</h1>
-
-      <form onSubmit={handleSubmit}>
-        <div className="formfield">
-          <label htmlFor="firstName">First Name</label>
-          <input
-            name="firstName"
-            type="text"
-            onChange={handleChange}
-            placeholder="John"
-          />
+      <section className="section">
+        <div className="container container-main">
+          <form className="form" onSubmit={handleSubmit}>
+            <h1>APPLY TO CYCLE</h1>
+            <div className="formfield">
+              <label htmlFor="firstName">First Name</label>
+              <input
+                name="firstName"
+                type="text"
+                onChange={handleChange}
+                placeholder="John"
+              />
+            </div>
+            <div className="formfield">
+              <label htmlFor="lastName">Last Name</label>
+              <input
+                name="lastName"
+                type="lastName"
+                onChange={handleChange}
+                placeholder="Smith"
+              />
+            </div>
+            <div className="formfield">
+              <label htmlFor="dateOfBirth">Date of Birth</label>
+              <input name="dateOfBirth" type="date" onChange={handleChange} />
+            </div>
+            <div className="formfield">
+              <label htmlFor="phone">Phone Number</label>
+              <input
+                name="phone"
+                type="number"
+                onChange={handleChange}
+                placeholder="0097250XXXXXXX"
+              />
+            </div>
+            <div className="formfield">
+              <label htmlFor="email">Email</label>
+              <input
+                name="email"
+                type="email"
+                onChange={handleChange}
+                placeholder="user@usermail.com"
+              />
+            </div>
+            <div className="formfield">
+              <label htmlFor="city">City</label>
+              <select name="city" onChange={handleChange}>
+                <option selected disabled hidden>
+                  Choose here
+                </option>
+                <option>New York</option>
+                <option>Georgia</option>
+                <option>London</option>
+              </select>
+            </div>
+            <div className="formfield">
+              <label htmlFor="maritalStatus">Marital Status</label>
+              <select name="maritalStatus" onChange={handleChange}>
+                <option selected disabled hidden>
+                  Choose here
+                </option>
+                <option>Married</option>
+                <option>Single</option>
+              </select>
+            </div>
+            <div className="formfield">
+              <label htmlFor="employmentStatus">Employment Status</label>
+              <select name="employmentStatus" onChange={handleChange}>
+                <option selected disabled hidden>
+                  Choose here
+                </option>
+                <option>Unemployed</option>
+                <option>Part Time Employment</option>
+                <option>Full Time Employment</option>
+                <option>Gig Economy</option>
+              </select>
+            </div>
+            <div className="formfield">
+              <label htmlFor="gender">Gender</label>
+              <select name="gender" onChange={handleChange}>
+                <option></option>
+                <option>Male</option>
+              </select>
+            </div>
+            <div className="formfield">
+              <label htmlFor="height">Height (cm)</label>
+              <input
+                name="height"
+                type="number"
+                onChange={handleChange}
+                placeholder="170"
+              />
+            </div>
+            <div className="formfield">
+              <label htmlFor="weight">Weight (kgs)</label>
+              <input
+                name="weight"
+                type="number"
+                onChange={handleChange}
+                placeholder="80"
+              />
+            </div>
+            <div className="formfield">
+              <label htmlFor="yearStartedCycling">title</label>
+              <select name="yearStartedCycling" onChange={handleChange}>
+                <option selected disabled hidden>
+                  Choose here
+                </option>
+                {yearsArray.map((year) => (
+                  <option key={year}> {year} </option>
+                ))}
+              </select>
+            </div>
+            <div className="formfield">
+              <label htmlFor="previousSportingExperience">
+                Previous Sporting Expirience
+              </label>
+              <textarea
+                name="previousSportingExperience"
+                cols="40"
+                rows="10"
+                onChange={handleChange}
+              ></textarea>
+            </div>
+            <div className="formfield">
+              <label htmlFor="injury">Injury Details</label>
+              <textarea
+                name="injury"
+                cols="40"
+                rows="10"
+                onChange={handleChange}
+              ></textarea>
+            </div>
+            <div className="formfield">
+              <label htmlFor="biography">Short Biography (500 words max)</label>
+              <textarea
+                name="biography"
+                cols="40"
+                rows="10"
+                onChange={handleChange}
+              ></textarea>
+            </div>
+            <div>
+              <label htmlFor="categories">CATEGORIES</label>
+            </div>
+            <div>
+              <button type="submit" className="button" onSubmit={handleSubmit}>
+                SUBMIT ATHLETE APPLICATION
+              </button>
+            </div>
+          </form>
         </div>
-        <div className="formfield">
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            name="lastName"
-            type="lastName"
-            onChange={handleChange}
-            placeholder="Smith"
-          />
-        </div>
-        <div className="formfield">
-          <label htmlFor="dateOfBirth">Date of Birth</label>
-          <input name="dateOfBirth" type="date" onChange={handleChange} />
-        </div>
-        <div className="formfield">
-          <label htmlFor="phone">Phone Number</label>
-          <input
-            name="phone"
-            type="number"
-            onChange={handleChange}
-            placeholder="0097250XXXXXXX"
-          />
-        </div>
-        <div className="formfield">
-          <label htmlFor="email">Email</label>
-          <input
-            name="email"
-            type="email"
-            onChange={handleChange}
-            placeholder="user@usermail.com"
-          />
-        </div>
-        <div className="formfield">
-          <label htmlFor="city">City</label>
-          <select name="city" onChange={handleChange}>
-            <option></option>
-            <option>New York</option>
-            <option>Georgia</option>
-            <option>London</option>
-          </select>
-        </div>
-        <div className="formfield">
-          <label htmlFor="maritalStatus">Marital Status</label>
-          <select name="maritalStatus" onChange={handleChange}>
-            <option></option>
-            <option>Married</option>
-            <option>Single</option>
-          </select>
-        </div>
-        <div className="formfield">
-          <label htmlFor="employmentStatus">Employment Status</label>
-          <select name="employmentStatus" onChange={handleChange}>
-            <option></option>
-            <option>Unemployed</option>
-            <option>Part Time Employment</option>
-            <option>Full Time Employment</option>
-            <option>Gig Economy</option>
-          </select>
-        </div>
-        <div className="formfield">
-          <label htmlFor="gender">Gender</label>
-          <select name="gender" onChange={handleChange}>
-            <option></option>
-            <option>Male</option>
-          </select>
-        </div>
-        <div className="formfield">
-          <label htmlFor="height">Height (cm)</label>
-          <input
-            name="height"
-            type="number"
-            onChange={handleChange}
-            placeholder="170"
-          />
-        </div>
-        <div className="formfield">
-          <label htmlFor="weight">Weight (kgs)</label>
-          <input
-            name="weight"
-            type="number"
-            onChange={handleChange}
-            placeholder="80"
-          />
-        </div>
-        <div className="formfield">
-          <label htmlFor="yearStartedCycling">title</label>
-          <select name="yearStartedCycling" onChange={handleChange}>
-            {yearsArray.map((year) => (
-              <option key={year}> {year} </option>
-            ))}
-          </select>
-        </div>
-        <div className="formfield">
-          <label htmlFor="previousSportingExperience">
-            Previous Sporting Expirience
-          </label>
-          <textarea
-            name="previousSportingExperience"
-            cols="40"
-            rows="10"
-            onChange={handleChange}
-          ></textarea>
-        </div>
-        <div className="formfield">
-          <label htmlFor="injury">Injury Details</label>
-          <textarea
-            name="injury"
-            cols="40"
-            rows="10"
-            onChange={handleChange}
-          ></textarea>
-        </div>
-        <div className="formfield">
-          <label htmlFor="biography">Short Biography (500 words max)</label>
-          <textarea
-            name="biography"
-            cols="40"
-            rows="10"
-            onChange={handleChange}
-          ></textarea>
-        </div>
-        <div>
-          <label htmlFor="categories">CATEGORIES</label>
-        </div>
-        <div>
-          <button type="submit" className="action1" onSubmit={handleSubmit}>
-            SUBMIT ATHLETE APPLICATION
-          </button>
-        </div>
-      </form>
+      </section>
     </div>
   );
 };

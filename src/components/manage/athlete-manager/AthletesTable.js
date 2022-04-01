@@ -17,6 +17,12 @@ function AthleteTable() {
 
   console.log('ATHLETES ARE', tableData);
 
+  function capetalizeString(string) {
+    const wordToCapetalize = string;
+    const CapetalizeTheWord =
+      wordToCapetalize.charAt(0).toUpperCase() + wordToCapetalize.slice(1);
+    return CapetalizeTheWord;
+  }
   const pageLocation = location.pathname;
   console.log(location.pathname);
   function handleForm(athleteId) {
@@ -36,7 +42,6 @@ function AthleteTable() {
 
   return (
     <div className="table-and-controller">
-      <h1> Table title </h1>
       <div className="table-controller">
         <Link className="button" to="/manage/athletes/stat/approved">
           APPROVED
@@ -51,6 +56,7 @@ function AthleteTable() {
           REJECTED
         </Link>
       </div>
+      <h1 className="table-title"> {status.toUpperCase()} ATHLETES </h1>
 
       {!tableData ? (
         <h1>...Loading</h1>
@@ -58,14 +64,16 @@ function AthleteTable() {
         <div className="table">
           {tableData.map((athlete) => (
             <div className="table-card" key={athlete.firstName}>
-              <div className="table-item" id="title">
-                <h1>{athlete.firstName}</h1>
+              <div className="table-combined-items" id="tableitem1">
+                <h1>{capetalizeString(athlete.firstName)}</h1>
+                <h1>{capetalizeString(athlete.lastName)}</h1>
               </div>
-              <div className="table-item" id="date"></div>
-              <p>{athlete.applicationStatus}</p>
-              <div className="table-item" id="viewbutton">
-                <Link className="button" to={handleForm(athlete._id)}>
-                  view
+              <div className="table-combined-items" id="tableitem2">
+                <p>{capetalizeString(athlete.applicationStatus)}</p>
+              </div>
+              <div className="table-item" id="tableitem3">
+                <Link className="table-button" to={handleForm(athlete._id)}>
+                  View Profile
                 </Link>
               </div>
             </div>

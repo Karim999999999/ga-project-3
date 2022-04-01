@@ -19,37 +19,62 @@ import Navbar from './Navbar';
 import AthleteTable from './manage/athlete-manager/athletesTable';
 import NewAthleteForm from './athletes/NewAthleteForm';
 import AthleteManager from './manage/athlete-manager/AthleteManagerProfile';
-
+import EditAthleteForm from './manage/athlete-manager/athlete-controllers/EditAthleteDetailsForm';
+import ChangeApplicationStatusForm from './manage/athlete-manager/athlete-controllers/ChangeApplicationStatusForm';
+import SingleMedicalIncident from './manage/athlete-manager/medical-incidents/singleMedicalIncident';
+import AllMedicalIncidentsforAthlete from './manage/athlete-manager/medical-incidents/AllMedicalIncidentsforAthlete';
+import GetAllSessionsForAthlete from './manage/athlete-manager/GetAllSessionsForAthlete';
+import Footer from './Footer';
 
 const App = () => (
   <BrowserRouter>
     <Navbar />
     <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/about' element={<About />} />
-      <Route path='/discover' element={<Articles />} />
-      <Route path='/discover/:id' element={<SingleArticle />} />
-      <Route path='/manage' element={<ManageHome />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/discover" element={<Articles />} />
+      <Route path="/discover/:id" element={<SingleArticle />} />
+      <Route path="/manage" element={<ManageHome />} />
       <Route
-        path='/discover/category/:category'
+        path="/discover/category/:category"
         element={<ArticlesByCategory />}
       />
-      <Route path='/manage/articles' element={<ArticlesByUser />} />
-      <Route path='/manage/articles/create' element={<ArticleForm />} />
+      <Route path="/manage/articles" element={<ArticlesByUser />} />
+      <Route path="/manage/articles/create" element={<ArticleForm />} />
       <Route
-        path='/manage/articles/:articleId/:status'
+        path="/manage/articles/:articleId/:status"
         element={<ArticleForm />}
       />
-      <Route path='/manage/articles/:status' element={<ArticleByStatus />} />
+      <Route path="/manage/articles/:status" element={<ArticleByStatus />} />
       <Route path="/athletes" element={<Athletes />} />
-      <Route path="/athletes/:id" element={<SingleAthlete />} />
+      <Route path="/approved-athletes/:athleteId" element={<SingleAthlete />} />
       <Route path="/manage/athletes/stat/:status" element={<AthleteTable />} />
       <Route path="/login" element={<Login />} />
       <Route path="/newAthlete" element={<NewAthleteForm />} />
       <Route path="/manage/athlete/:athleteId" element={<AthleteManager />} />
+      <Route
+        path="/manage/athlete/:athleteId/sessions"
+        element={<GetAllSessionsForAthlete />}
+      />
+      <Route
+        path="/manage/athlete/:athleteId/medical-incidents"
+        element={<AllMedicalIncidentsforAthlete />}
+      />
+      <Route
+        path="/manage/athlete/:athleteId/edit"
+        element={<EditAthleteForm />}
+      />
+      <Route
+        path="/manage/athlete/:athleteId/editstatus"
+        element={<ChangeApplicationStatusForm />}
+      />
+      <Route
+        path="/athlete/:athleteId/medical-incident/:medicalIncidentId"
+        element={<SingleMedicalIncident />}
+      />
       {/* <Route path="/register" element={<Register />} /> */}
-
     </Routes>
+    <Footer />
   </BrowserRouter>
 );
 
