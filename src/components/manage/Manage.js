@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 
 function ManageHome() {
   return (
@@ -7,6 +8,7 @@ function ManageHome() {
       <div>
         <h1>Welcome to Manage</h1>
         <p>Manage is your one stop portal for all of your team needs.</p>
+
         <div className="apps-dashboard-container container-flex">
           <Link to="/manage/articles/" className="articles">
             <div className="app-button-container">
@@ -28,7 +30,6 @@ function ManageHome() {
           </Link>
           <Link to='/manage/users/addUser' className='users'>
             <div className='app-button-container'>
-              <div className='app-icon' id='sessions-app'></div>
               <h4>Users</h4>
             </div>
           </Link>

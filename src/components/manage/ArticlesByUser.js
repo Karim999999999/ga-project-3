@@ -4,7 +4,6 @@ import jwtDecode from 'jwt-decode';
 import { getArticlesByUserId } from '../../api/manage';
 import { getUserById } from '../../api/auth';
 import TableData from './TableData';
-import { getAllArticles } from '../../api/articles';
 
 const ArticlesByUser = () => {
   const { userId } = jwtDecode(sessionStorage.getItem('token'));
@@ -12,9 +11,10 @@ const ArticlesByUser = () => {
   const [user, setUser] = useState(null);
   const [articles, setArticles] = useState(null);
 
-  useEffect(() => {
-    getUserById(userId).then(user => setUser(user));
-    getAllArticles().then(articles => setArticles(articles));
+  useEffect(async () => {
+    const user = await getUserById(userId);
+    setUser(user);
+    getArticlesByUserId(userId).then(articles => setArticles(articles));
   }, []);
 
   console.log(articles);

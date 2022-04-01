@@ -1,13 +1,10 @@
 import axios from 'axios';
 
-
 const getAllArticles = () =>
-  axios
-    .request({
-      method: 'GET',
-      url: '/api/articles',
-    })
-    .then(({ data }) => data.data);
+  axios.request({
+    method: 'GET',
+    url: '/api/articles',
+  });
 
 const getArticlesByCategory = category =>
   axios
@@ -18,6 +15,15 @@ const getArticlesByCategory = category =>
     })
     .then(({ data }) => data.data);
 
+const getAllArticlesByStatus = status =>
+  axios
+    .request({
+      method: 'GET',
+      url: '/api/articles',
+      params: { status },
+    })
+    .then(data => data.data);
+
 const getArticleById = id =>
   axios
     .request({
@@ -26,4 +32,9 @@ const getArticleById = id =>
     })
     .then(({ data }) => data);
 
-export { getAllArticles, getArticlesByCategory, getArticleById };
+export {
+  getAllArticles,
+  getArticlesByCategory,
+  getArticleById,
+  getAllArticlesByStatus,
+};

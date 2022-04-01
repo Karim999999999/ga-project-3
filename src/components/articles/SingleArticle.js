@@ -10,7 +10,20 @@ const SingleArticle = () => {
     getArticleById(id).then(article => setArticle(article));
   }, []);
 
-  return <>{!article ? <p>Loading...</p> : <h1>{article.title}</h1>}</>;
+  return (
+    <>
+      {!article ? (
+        <p>Loading...</p>
+      ) : (
+        <section className='section'>
+          <div className='container container-main'>
+            <h1>{article.title}</h1>
+            <p>{article.body}</p>
+          </div>
+        </section>
+      )}
+    </>
+  );
 };
 
 export default SingleArticle;
