@@ -13,10 +13,6 @@ const SessionHome = () => {
 
   console.log(sessions);
 
-  useEffect(async () => {
-    sessions && setSessions(sessionsUpToDate(sessions));
-  }, [sessions]);
-
   return (
     <section className='section'>
       <Link to='/manage/sessions/create' className='new-article'>

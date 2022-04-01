@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { createSessions } from '../../api/manage';
+import { createSessions, getSessionById } from '../../api/manage';
 import jwtDecode from 'jwt-decode';
+import { getUserById } from '../../api/auth';
+import JoinBtn from '../athletes/JoinBtn';
 
 const SessionForm = () => {
   const { userId } = jwtDecode(sessionStorage.getItem('token'));
-  const x = useParams();
-  console.log(x);
+  const { sessionId } = useParams();
+  console.log(sessionId);
 
   const initialSessionState = {
     dateAndTime: '',
@@ -30,10 +32,21 @@ const SessionForm = () => {
     setSession(newSession);
   };
 
-  console.log(session);
   useEffect(() => {
     setSession({ ...session, dateAndTime: new Date(date) });
   }, [date]);
+
+  useEffect(async () => {
+    if (sessionId) {
+      const session = await getSessionById(sessionId);
+      setSession(session);
+    }
+
+    const user = await getUserById(userId);
+    setUser(user);
+  }, []);
+
+  console.log(session);
 
   function padTo2Digits(num) {
     return num.toString().padStart(2, '0');
@@ -63,7 +76,7 @@ const SessionForm = () => {
     <section className='section'>
       <div className='container container-main'>
         <div>
-          <h1>New Session</h1>
+          {!sessionId ? <h1>New Session</h1> : <h1>View Session</h1>}
           <form className='form'>
             <div>
               <label htmlFor='date-picker'>Pick a Date</label>
@@ -72,12 +85,7 @@ const SessionForm = () => {
                 onChange={date => setDate(date)}
                 dateFormat='MM/dd/yy'
               />
-              <input
-                type='text'
-                className='date-input'
-                value={formattedDate}
-                defaultValue={null}
-              />
+              <input type='text' className='date-input' value={formattedDate} />
             </div>
             <div>
               <label htmlFor='location'>location</label>
@@ -127,24 +135,15 @@ const SessionForm = () => {
                 onChange={handleChange}
               />
             </div>
-
-            <div>
-              {!session || session.sessionStatus !== 'cancelled' ? (
-                ''
-              ) : (
-                <textarea
-                  name='body'
-                  id='form-body'
-                  cols='40'
-                  rows='10'
-                  // onChange={handleChange}
-                  // value={article.body}
-                ></textarea>
-              )}
-            </div>
-            <button type='submit' className='btn' onClick={handleSumbit}>
-              Create Session
-            </button>
+            {!sessionId ? (
+              <button type='submit' className='btn' onClick={handleSumbit}>
+                Create Session
+              </button>
+            ) : (
+              <Link className='btn' to={`/manage/sessions/cancel/${sessionId}`}>
+                Cancel
+              </Link>
+            )}
           </form>
         </div>
       </div>

@@ -103,4 +103,21 @@ const getSessionsByStatus = status =>
     })
     .then(({ data }) => data);
 
-export { getSessions, createSessions, updateSession, getSessionsByStatus };
+const getSessionById = id =>
+  axios
+    .request({
+      method: 'GET',
+      url: `/api/sessions/${id}`,
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    .then(({ data }) => data);
+
+export {
+  getSessions,
+  getSessionById,
+  createSessions,
+  updateSession,
+  getSessionsByStatus,
+};

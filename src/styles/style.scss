@@ -75,6 +75,10 @@ img {
 .container-main {
   max-width: 900px;
   margin-bottom: 50px;
+
+  p {
+    text-align: left;
+  }
 }
 
 .container-grid {
@@ -106,6 +110,91 @@ img {
   }
 }
 
+.main-articles-container {
+  background: var(--color-discover);
+  padding: 1em;
+
+  h2 {
+    text-align: left;
+    text-transform: uppercase;
+    text-decoration: underline;
+    margin-bottom: 1em;
+  }
+
+  .main-articles-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-bottom: 3em;
+
+    .latest-article {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-grow: 1;
+      width: 100%;
+      border: 3px solid var(--color-discover);
+      background-color: #fff;
+      padding: 0 1em;
+      font-weight: bold;
+
+      a {
+        color: #000;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.category {
+  background-color: var(--color-manage);
+  padding: 0.2em 0.8em;
+  border-radius: 20px;
+}
+
+.container-categories {
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 3em;
+
+  > * {
+    width: 100%;
+  }
+
+  > * + * {
+    margin-left: 3em;
+  }
+
+  h3 {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+  }
+
+  h3 a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .category-box {
+    background-color: #ff83ff;
+    padding: 1em;
+    font-weight: bold;
+  }
+
+  .category-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.5em;
+    margin-bottom: 1em;
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+  }
+}
 .container-athletes {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 50px;

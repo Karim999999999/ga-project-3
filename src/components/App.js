@@ -26,6 +26,7 @@ import ArticleView from './manage/ArticleView';
 import ShowMessage from './manage/ShowMessage';
 import ArticlesForEditor from './manage/ArticlesForEditor';
 import SessionsByStatus from './sessions/SessionsByStatus';
+import CancelSessionForm from './sessions/CancelSessionForm';
 
 const App = () => {
   return (
@@ -73,6 +74,10 @@ const App = () => {
         <Route
           path='/manage/sessions/status/:status'
           element={<SessionsByStatus />}
+        />
+        <Route
+          path='/manage/sessions/cancel/:sessionId'
+          element={<CancelSessionForm />}
         />
       </Routes>
     </BrowserRouter>
