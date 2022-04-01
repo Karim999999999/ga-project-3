@@ -26,7 +26,7 @@ function ManageHome() {
               <h4>Athletes</h4>
             </div>
           </Link>
-          <Link to='/manage/users/' className='users'>
+          <Link to='/manage/users/addUser' className='users'>
             <div className='app-button-container'>
               <div className='app-icon' id='sessions-app'></div>
               <h4>Users</h4>

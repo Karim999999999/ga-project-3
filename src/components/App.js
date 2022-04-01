@@ -19,8 +19,8 @@ import Navbar from './Navbar';
 import AthleteTable from './manage/athlete-manager/athletesTable';
 import NewAthleteForm from './athletes/NewAthleteForm';
 import AthleteManager from './manage/athlete-manager/AthleteManagerProfile';
-
-
+import NewUserForm from './users/NewUser';
+import UserTable from './users/UserTable';
 const App = () => (
   <BrowserRouter>
     <Navbar />
@@ -41,14 +41,15 @@ const App = () => (
         element={<ArticleForm />}
       />
       <Route path='/manage/articles/:status' element={<ArticleByStatus />} />
-      <Route path="/athletes" element={<Athletes />} />
-      <Route path="/athletes/:id" element={<SingleAthlete />} />
-      <Route path="/manage/athletes/stat/:status" element={<AthleteTable />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/newAthlete" element={<NewAthleteForm />} />
-      <Route path="/manage/athlete/:athleteId" element={<AthleteManager />} />
+      <Route path='/athletes' element={<Athletes />} />
+      <Route path='/athletes/:id' element={<SingleAthlete />} />
+      <Route path='/manage/athletes/stat/:status' element={<AthleteTable />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/newAthlete' element={<NewAthleteForm />} />
+      <Route path='/manage/athlete/:athleteId' element={<AthleteManager />} />
       {/* <Route path="/register" element={<Register />} /> */}
-
+      <Route path='manage/users/addUser' element={<NewUserForm />} />
+      <Route path='manage/users' element={<UserTable />} />
     </Routes>
   </BrowserRouter>
 );
