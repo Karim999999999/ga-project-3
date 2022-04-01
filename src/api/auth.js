@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const loginUser = credentials =>
+export const loginUser = (credentials) =>
   axios
     .request({
       method: 'POST',
@@ -16,7 +16,7 @@ export const loginUser = credentials =>
     })
     .catch(console.error);
 
-export const getUserById = id =>
+export const getUserById = (id) =>
   axios
     .request({
       method: 'GET',

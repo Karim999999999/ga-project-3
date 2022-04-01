@@ -7,7 +7,10 @@ const ArticleForm = (props) => {
   const navigate = useNavigate();
   const categories = ['Cycling 101', 'Life in the city'];
 
-  const [form, setForm] = React.useState({});
+  const [form, setForm] = React.useState({
+    title: '',
+    body: '',
+  });
 
   const handleChange = (event) => {
     console.log(handleChange);
