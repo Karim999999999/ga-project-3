@@ -12,7 +12,7 @@ const Athletes = () => {
       <section className='section section-main section-athletes'>
         <h1>Our Athletes</h1>
         <div className='container container-main container-grid container-athletes'>
-          {athletes.map((athlete) => (
+          {athletes.map(athlete => (
             <Link key={athlete.id} to={`/athletes/${athlete.id}`}>
               <AthleteCard {...athlete} />
             </Link>

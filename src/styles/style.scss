@@ -173,7 +173,8 @@ img {
     }
   }
 
-  &.manage {
+  &.manage,
+  &.articles {
     background-color: var(--color-session);
 
     .main-navigation {
@@ -369,7 +370,6 @@ img {
   }
 }
 
-
 .form {
   background-color: var(--color-home);
   border: 3px solid #000;
@@ -441,6 +441,7 @@ img {
     margin-bottom: 50px;
     color: #000;
     transition: background-color 0.3s linear;
+    cursor: pointer;
 
     &.articles {
       background-color: var(--color-discover);
@@ -481,8 +482,12 @@ img {
   font-size: 2rem;
 }
 
+.apps-dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-
+.table-and-controller {
   ul {
     list-style: none;
     display: flex;
@@ -505,23 +510,53 @@ img {
       }
     }
   }
+}
 
-.apps-dashboard-container {
-  display: flex;
-  flex-wrap: wrap;
+.table-card {
+  display: grid;
+  grid-template-columns: 30% 60% 10%;
+  border: 3px solid #000;
+  border-bottom: none;
+  padding: 1em;
 
-  .app-button-container {
-    margin: 20px;
-    text-align: center;
-    .app-icon {
-      height: 200px;
-      width: 200px;
-      border-radius: 30px;
-      background-color: #ff83ff;
+  &-sessions {
+    grid-template-columns: 80% 20%;
+  }
+
+  &:last-child {
+    border-bottom: 3px solid #000;
+  }
+
+  #date {
+    display: flex;
+    justify-content: center;
+
+    > * + * {
+      margin-left: 20px;
     }
-    #athlete-app {
-      background-color: #bea37c;
+  }
+
+  .btn-view {
+    padding: 0em 0.4em;
+    background-color: var(--color-athletes-frontend);
+    border-radius: 30px;
+    text-decoration: none;
+
+    a {
+      text-decoration: none;
+      font-size: 1em;
     }
   }
 }
 
+.hidden {
+  display: none;
+}
+
+.message {
+  padding: 3em 5em;
+  background-color: var(--color-home);
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  border: 3px solid #000;
+}

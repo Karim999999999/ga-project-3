@@ -1,35 +1,65 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import jwtDecode from 'jwt-decode';
 import { Link } from 'react-router-dom';
+import { getUserById } from '../../api/auth';
 
 const TableData = ({ tableData }) => {
+  const { userId } = jwtDecode(sessionStorage.getItem('token'));
+
+  const [user, setUser] = useState(null);
+
+  useEffect(async () => {
+    const user = await getUserById(userId);
+    setUser(user);
+  }, []);
+
   return (
     <div className='table-and-controller'>
       <>
         <div className='table container container-main'>
           <ul>
-            <li>
-              <Link to='/manage/articles/draft'>Draft</Link>
-            </li>
-            <li>
-              <Link to='/manage/articles/out-to-publish'>Out to publish</Link>
-            </li>
-            <li>
-              <Link to='/manage/articles/published'>Published</Link>
-            </li>
-            <li>
-              <Link to='/manage/articles/review'>Review</Link>
-            </li>
+            {!user ? (
+              <p>Loading...</p>
+            ) : user.isEditor ? (
+              <>
+                <li>
+                  <Link to='/articles/editor'>New Articles</Link>
+                </li>
+                <li>
+                  <Link to='/articles/published'>Published</Link>
+                </li>
+                <li>
+                  <Link to='/articles/review'>Sent for Review</Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to={`/articles/${userId}/draft`}>Drafts</Link>
+                </li>
+                <li>
+                  <Link to={`/articles/${userId}/editor`}>Out For Edit</Link>
+                </li>
+                <li>
+                  <Link to={`/articles/${userId}/published`}>Published</Link>
+                </li>
+                <li>
+                  <Link to={`/articles/${userId}/review`}>Review</Link>
+                </li>
+              </>
+            )}
           </ul>
 
-          {tableData.map(({ _id, title, createdAt, status }) => (
+          {tableData.data.map(({ _id, title, createdAt, status }) => (
             <div className='table-card' key={_id}>
               <div className='table-item' id='title'>
                 <h2>{title}</h2>
               </div>
-              <div className='table-item' id='date'></div>
-              <p>{createdAt}</p>
-              <p>{status}</p>
-              <div className='table-item' id='viewbutton'>
+              <div className='table-item' id='date'>
+                <p>{createdAt}</p>
+                <p>{status}</p>
+              </div>
+              <div className='table-item btn btn-view' id='viewbutton'>
                 <Link
                   className='button'
                   to={`/manage/articles/${_id}/${status}`}
