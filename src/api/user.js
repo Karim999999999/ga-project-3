@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getAllUsers = async () => {
   const options = {
-    mehtod: 'GET',
+    method: 'GET',
     url: '/api/users',
     headers: {
       authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
@@ -44,7 +44,7 @@ export const createUser = async () => {
 export const updateUser = async (id) => {
   const options = {
     method: 'PUT',
-    url: `/api/${id}`,
+    url: `/api/users/${id}`,
     headers: {
       authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
     },

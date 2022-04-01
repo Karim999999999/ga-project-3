@@ -9,13 +9,11 @@ import Athletes from './athletes/Athletes';
 import SingleAthlete from './athletes/SingleAthlete';
 import Login from './auth/Login';
 import Home from './Home';
-
 import ArticleByStatus from './manage/ArticleByStatus';
 import ArticleForm from './manage/ArticleForm';
 import ArticlesByUser from './manage/ArticlesByUser';
 import ManageHome from './manage/Manage';
 import Navbar from './Navbar';
-
 import AthleteTable from './manage/athlete-manager/athletesTable';
 import NewAthleteForm from './athletes/NewAthleteForm';
 import AthleteManager from './manage/athlete-manager/AthleteManagerProfile';
@@ -25,6 +23,9 @@ import SingleMedicalIncident from './manage/athlete-manager/medical-incidents/si
 import AllMedicalIncidentsforAthlete from './manage/athlete-manager/medical-incidents/AllMedicalIncidentsforAthlete';
 import GetAllSessionsForAthlete from './manage/athlete-manager/GetAllSessionsForAthlete';
 import Footer from './Footer';
+import NewUserForm from './users/NewUser';
+import UserTable from './users/UserTable';
+
 
 const App = () => (
   <BrowserRouter>
@@ -72,7 +73,8 @@ const App = () => (
         path="/athlete/:athleteId/medical-incident/:medicalIncidentId"
         element={<SingleMedicalIncident />}
       />
-      {/* <Route path="/register" element={<Register />} /> */}
+      <Route path='manage/users/addUser' element={<NewUserForm />} />
+      <Route path='manage/users' element={<UserTable />} />
     </Routes>
     <Footer />
   </BrowserRouter>
