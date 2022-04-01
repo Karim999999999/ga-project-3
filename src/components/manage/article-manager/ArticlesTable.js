@@ -2,13 +2,16 @@ import React from 'react';
 import { getArticlesByStatusAndUserId } from '../../../api/articles';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 function ArticlesTable() {
+  const navigate = useNavigate();
   const [tableData, setTableData] = React.useState([]);
   const { status } = useParams();
   React.useEffect(() => {
     const getData = async () => {
       const articles = await getArticlesByStatusAndUserId(status);
       setTableData(articles);
+      navigate('/');
     };
 
     getData();
