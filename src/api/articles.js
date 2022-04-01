@@ -1,12 +1,10 @@
 import axios from 'axios';
 
 const getAllArticles = () =>
-  axios
-    .request({
-      method: 'GET',
-      url: '/api/articles',
-    })
-    .then(({ data }) => data.data);
+  axios.request({
+    method: 'GET',
+    url: '/api/articles',
+  });
 
 const getArticlesByCategory = category =>
   axios

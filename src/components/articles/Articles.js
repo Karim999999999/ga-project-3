@@ -9,7 +9,7 @@ const Articles = () => {
 
   useEffect(() => {
     getAllArticles().then(articles => {
-      setArticles(articles);
+      setArticles(articles.data.data);
     });
 
     getArticlesByCategory('training').then(articles =>
@@ -20,6 +20,8 @@ const Articles = () => {
       setArticlesBySport(articles)
     );
   }, []);
+
+  console.log(articles);
 
   return (
     <>

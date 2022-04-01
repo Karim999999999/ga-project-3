@@ -7,8 +7,10 @@ const ArticlesForEditor = () => {
 
   useEffect(() => {
     getAllArticles()
-      .then(articles => articles.filter(article => article.status !== 'draft'))
-      .then(articles => setArticles(articles));
+      // .then(articles =>
+      //   articles.data.filter(article => article.status !== 'draft')
+      // )
+      .then(articles => setArticles(articles.data));
   }, []);
 
   console.log(articles);
