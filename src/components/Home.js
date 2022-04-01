@@ -1,9 +1,5 @@
-
 import jwtDecode from 'jwt-decode';
 import React, { useEffect, useState } from 'react';
-import Navbar from './Navbar';
-import React from 'react';
-
 
 import { getUserById } from '../api/auth';
 
